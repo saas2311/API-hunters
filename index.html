@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Registro Interdimensional — API Hunters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Public+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+<header class="topo">
+<span class="selo">API Hunters · Rick and Morty API</span>
+<h1>Registro Interdimensional de Indivíduos</h1>
+<p>Consulte personagens da <a href="https://rickandmortyapi.com" target="_blank" rel="noopener">Rick and Morty API</a>. Pesquise por nome, filtre os personagens e navegue pelas páginas.</p>
+</header>
+
+<section class="controles">
+<label class="campo-busca">
+<span>⌕</span>
+<input id="campoNome" type="search" placeholder="Buscar por nome" autocomplete="off" aria-label="Buscar personagem por nome">
+</label>
+
+<select id="filtroStatus" aria-label="Filtrar por situação">
+<option value="">Situação: todas</option>
+<option value="alive">Vivo</option>
+<option value="dead">Morto</option>
+<option value="unknown">Desconhecida</option>
+</select>
+
+<select id="filtroEspecie" aria-label="Filtrar por espécie">
+<option value="">Espécie: todas</option>
+<option value="Human">Humano</option>
+<option value="Alien">Alienígena</option>
+<option value="Robot">Robô</option>
+<option value="Humanoid">Humanoide</option>
+<option value="Animal">Animal</option>
+<option value="Mythological Creature">Criatura mitológica</option>
+</select>
+
+<select id="filtroGenero" aria-label="Filtrar por gênero">
+<option value="">Gênero: todos</option>
+<option value="male">Masculino</option>
+<option value="female">Feminino</option>
+<option value="genderless">Sem gênero</option>
+<option value="unknown">Desconhecido</option>
+</select>
+
+<button id="botaoLimpar" class="limpar" type="button">Limpar filtros</button>
+</section>
+
+<p class="aviso-demo" id="avisoDemo" hidden></p>
+
+<div class="linha-status">
+<span id="resumo">Carregando o arquivo...</span>
+<span id="origemDados"></span>
+</div>
+
+<section class="estado" id="estadoCarregando">
+<div class="portal"></div>
+<h2>Abrindo o portal</h2>
+<p>Buscando os personagens na API...</p>
+</section>
+
+<section class="estado" id="estadoVazio" hidden>
+<h2>Nenhum personagem encontrado</h2>
+<p id="textoVazio">Tente outro nome ou remova algum filtro.</p>
+<button class="btn" type="button" data-acao="limpar">Limpar filtros</button>
+</section>
+
+<section class="estado" id="estadoErro" hidden>
+<h2>Não foi possível realizar a consulta</h2>
+<p id="textoErro">A API não respondeu. Tente novamente.</p>
+<button class="btn" type="button" data-acao="recarregar">Tentar novamente</button>
+</section>
+
+<ul class="grade" id="grade" aria-live="polite"></ul>
+
+<nav class="paginacao" id="paginacao" hidden>
+<button class="pag-btn" id="botaoAnterior" type="button">← Anterior</button>
+<span class="pag-info" id="infoPagina"></span>
+<button class="pag-btn" id="botaoProxima" type="button">Próxima →</button>
+</nav>
+
+<footer>Projeto acadêmico desenvolvido com HTML, CSS e JavaScript puro, utilizando <code>fetch</code> e <code>async/await</code>.</footer>
+</main>
+
+<dialog id="painel">
+<div class="painel">
+<span class="ficha-id" id="painelId"></span>
+<h2 id="painelNome"></h2>
+<span class="sinal" id="painelSinal"></span>
+<table><tbody id="painelCorpo"></tbody></table>
+<button class="fechar" id="painelFechar" type="button">Fechar</button>
+</div>
+</dialog>
+
+<script src="script.js"></script>
+</body>
+</html>
